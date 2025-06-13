@@ -41,16 +41,13 @@ class ProviderCallbackController extends Controller
         ]);
 
         if (!$user) {
-            $role = Role::query()->where('name', RoleEnum::CLIENT->value)->first();
-
             $user = User::query()->create([
                 'name' => $socialUser->name,
                 'email' => $socialUser->email,
+                'avatar' => $socialUser->avatar,
             ]);
 
             $providerUser->update(['user_id' => $user->id]);
-
-            $user->assignRole($role);
         }
 
         Auth::login($user);

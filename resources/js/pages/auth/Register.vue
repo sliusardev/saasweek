@@ -7,6 +7,7 @@ import { Label } from '@/components/ui/label';
 import AuthBase from '@/layouts/AuthLayout.vue';
 import { Head, useForm } from '@inertiajs/vue3';
 import { LoaderCircle } from 'lucide-vue-next';
+import SocialiteButtons from '@/components/auth/SocialiteButtons.vue';
 
 const form = useForm({
     name: '',
@@ -73,6 +74,8 @@ const submit = () => {
                     Create account
                 </Button>
             </div>
+
+            <SocialiteButtons></SocialiteButtons>
 
             <div class="text-center text-sm text-muted-foreground">
                 Already have an account?
