@@ -67,11 +67,6 @@ class User extends Authenticatable
         return $this->hasMany(AuthProviders::class);
     }
 
-    public function getAvatar()
-    {
-        return $this->avatar ?? asset('assets/images/dashboard/profile.png');
-    }
-
     public function getRolesNames(): string
     {
         return $this->roles()->pluck('name')->implode(', ');
