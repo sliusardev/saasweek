@@ -25,7 +25,8 @@ trait DataTableTrait
         array $searchableColumns,
         array $sortableColumns = null,
         string $defaultSortField = 'id',
-        string $defaultSortDirection = 'desc'
+        string $defaultSortDirection = 'desc',
+        int $perPage = 10
     ): LengthAwarePaginator
     {
         // If sortable columns not specified, use searchable columns
@@ -52,8 +53,6 @@ trait DataTableTrait
             $query->orderBy($defaultSortField, $defaultSortDirection);
         }
 
-        // Apply pagination
-        $perPage = $request->get('per_page', 10);
         return $query->paginate($perPage)->withQueryString();
     }
 

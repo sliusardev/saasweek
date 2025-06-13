@@ -18,12 +18,13 @@ class UserController extends Controller
         $searchableColumns = ['name', 'email'];
         $sortableColumns = ['id', 'name', 'email', 'phone', 'created_at'];
 
-        // Apply data table filters, sorting, and pagination
+        $perPage = $request->input('per_page', 10); // Default to 10 items per page
         $users = $this->applyDataTableFilters(
             $query,
             $request,
             $searchableColumns,
-            $sortableColumns
+            $sortableColumns,
+            $perPage
         );
 
         // Format data for frontend
